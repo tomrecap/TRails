@@ -9,7 +9,7 @@ class ControllerBase
     @req = req
     @res = res
 
-    @already_rendered = false
+    @already_built_response = false
 
     @params = Params.new(req, route_params)
   end
@@ -18,29 +18,29 @@ class ControllerBase
     @session ||= Session.new(@req)
   end
 
-  def already_rendered?
-    @already_rendered
+  def already_built_response?
+    @already_built_response
   end
 
   def redirect_to(url)
-    raise "double render" if already_rendered?
+    raise "double render error" if already_built_response?
 
     @res.status = 302
     @res.header['location'] = url
     session.store_session(res)
 
-    @already_rendered = true
+    @already_built_response = true
     nil
   end
 
   def render_content(content, type)
-    raise "double render error" if already_rendered?
+    raise "double render error" if already_built_response?
 
-    @res.content_type = type
     @res.body = content
+    @res.content_type = type
     session.store_session(@res)
 
-    @rendered = true
+    @already_built_response = true
     nil
   end
 
@@ -55,7 +55,7 @@ class ControllerBase
 
   def invoke_action(name)
     self.send(name)
-    render(name) unless already_rendered?
+    render(name) unless already_built_response?
 
     nil
   end
