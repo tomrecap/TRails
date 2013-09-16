@@ -27,7 +27,7 @@ class ControllerBase
 
     @res.status = 302
     @res.header['location'] = url
-    session.store_session(res)
+    session.store_session(@res)
 
     @already_built_response = true
     nil
