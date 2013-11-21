@@ -46,7 +46,7 @@ class Params
   def parse_key(key)
     match_data = /(?<head>.*)\[(?<rest>.*)\]/.match(key)
     if match_data
-      parse_key(match_data["rest"]).unshift(match_data["head"])
+      parse_key(match_data["head"]).push(match_data["rest"])
     else
       [key]
     end
