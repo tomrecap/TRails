@@ -13,7 +13,7 @@ class Session
   def []=(key, val)
   end
 
-  # serialize the hash into a cookie
+  # serialize the hash into json and save in a cookie
   # add to the responses cookies
   def store_session(res)
   end
