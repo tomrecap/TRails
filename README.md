@@ -12,3 +12,5 @@ generally follow the progression of the project.
 0.  `rspec spec/params_spec.rb`
 0.  `rspec spec/router_spec.rb`
 0.  `rspec spec/integration_spec.rb`
+
+If you're feeling extra fancy you can run (guard)[https://github.com/guard/guard]! just type `guard`
