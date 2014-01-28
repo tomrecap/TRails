@@ -13,6 +13,7 @@ class ControllerBase
     @req, @res = req, res
     @already_rendered = false
     session
+    @params = Params.new(req)
   end
 
   # populate the response with content
