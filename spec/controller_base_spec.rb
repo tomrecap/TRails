@@ -29,12 +29,12 @@ describe ControllerBase do
     describe "#already_rendered?" do
       let(:users_controller2) { UsersController.new(req, res) }
       it "is false before rendering" do
-        users_controller2.already_rendered?.should be_false
+        users_controller2.already_rendered?.should be(false)
       end
 
       it "is true after rendering content" do
         users_controller2.render_content "sombody", "text/html"
-        users_controller2.already_rendered?.should be_true
+        users_controller2.already_rendered?.should be(true)
       end
 
       it "raises an error when attempting to render twice" do
@@ -62,12 +62,12 @@ describe ControllerBase do
     describe "#already_rendered?" do
       let(:users_controller2) { UsersController.new(req, res) }
       it "is false before rendering" do
-        users_controller2.already_rendered?.should be_false
+        users_controller2.already_rendered?.should be(false)
       end
 
       it "is true after rendering content" do
         users_controller2.redirect_to("http://google.com")
-        users_controller2.already_rendered?.should be_true
+        users_controller2.already_rendered?.should be(true)
       end
 
       it "raises an error when attempting to render twice" do
@@ -93,12 +93,12 @@ describe ControllerBase do
     describe "#already_rendered?" do
       let(:users_controller2) { UsersController.new(req, res) }
       it "is false before rendering" do
-        users_controller2.already_rendered?.should be_false
+        users_controller2.already_rendered?.should be(false)
       end
 
       it "is true after rendering content" do
         users_controller2.render(:index)
-        users_controller2.already_rendered?.should be_true
+        users_controller2.already_rendered?.should be(true)
       end
 
       it "raises an error when attempting to render twice" do
