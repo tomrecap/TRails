@@ -1,0 +1,26 @@
+<h1>You typed: <%= params["message"] || " " %></h1>
+
+<form action="/statuses/form_test" method="post">
+
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+  <label for="message">Your Message Here:</label>
+  <input type="text" name="message" value="<%= params["message"] || "Type something!" %>" id="message">
+
+  <p><input type="submit" value="Display My Message"></p>
+</form>
+
+<p>
+  params: <%= params.nil? ? "no params" : params %>
+</p>
+
+<p>
+  Request method: <%= @req.request_method %>
+  <br>
+  form authenticity token: <%= form_authenticity_tokens %>
+  <br>
+  authenticity token is valid?: <%#= authenticity_token_is_valid? %>
+</p>

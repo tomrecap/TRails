@@ -20,7 +20,7 @@ class Route
     keys = @pattern.names
     values = @pattern.match(req.path)
     route_params = {}
-    keys.each { |key| route_params[key.to_sym] = values[key] }
+    keys.each { |key| route_params[key.to_s] = values[key] }
     route_params
   end
 
